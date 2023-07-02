@@ -1,16 +1,21 @@
-import { Expense } from "@/components/pages/Expense";
-import { InCome } from "@/components/pages/Income/Income";
-import { ExpenseAndIncomeButtom } from "@/components/shared/ExpenseAndIncomeButton";
-import { useContext } from "@/hooks";
+import { InputForm } from "@/components/shared/InputFrom";
+import { TypeSwitchButton } from "@/components/shared/TypeSwitchButton";
+import { useState } from "react";
 
 export function Home() {
-  const { inputType, inputTypes } = useContext();
+  const types = ["Expense", "Income"];
+  const [type, setType] = useState<string>(types[0]);
+
+  const handleOnchange = (type: string) => {
+    setType(type);
+  };
+
   return (
     <div>
       <div className="px-2 py-6">
-        <ExpenseAndIncomeButtom />
+        <TypeSwitchButton type={type} types={types} onChange={handleOnchange} />
       </div>
-      {inputType == inputTypes[0] ? <Expense /> : <InCome />}
+      <InputForm type={type} />
     </div>
   );
 }

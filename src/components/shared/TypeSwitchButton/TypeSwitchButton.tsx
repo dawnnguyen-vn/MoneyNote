@@ -1,15 +1,22 @@
-import { useContext } from "@/hooks";
 import { ChangeEvent } from "react";
 
-export function ExpenseAndIncomeButtom() {
-  const { inputType, setInputType, inputTypes } = useContext();
+type TypeSwitchButtonProps = {
+  type: string;
+  types: string[];
+  onChange: (type: string) => void;
+};
 
+export function TypeSwitchButton({
+  type,
+  types,
+  onChange,
+}: TypeSwitchButtonProps) {
   const handleChangeInputType = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputType(e.target.value);
+    onChange(e.target.value);
   };
 
   const isChecked = (value: string) => {
-    if (value == inputType) {
+    if (value == type) {
       return true;
     }
     return false;
@@ -20,19 +27,19 @@ export function ExpenseAndIncomeButtom() {
       <input
         className="join-item btn btn-sm h-10 w-1/2"
         type="radio"
-        value={inputTypes[0]}
+        value={types[0]}
         name="options"
         aria-label="Tiền chi"
-        checked={isChecked(inputTypes[0])}
+        checked={isChecked(types[0])}
         onChange={handleChangeInputType}
       />
       <input
         className="join-item btn btn-sm h-10 w-1/2"
         type="radio"
-        value={inputTypes[1]}
+        value={types[1]}
         name="options"
         aria-label="Tiền thu"
-        checked={isChecked(inputTypes[1])}
+        checked={isChecked(types[1])}
         onChange={handleChangeInputType}
       />
     </div>

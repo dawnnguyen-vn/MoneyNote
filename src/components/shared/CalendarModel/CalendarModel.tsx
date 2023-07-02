@@ -1,4 +1,8 @@
-import { formatShortWeekday } from "@/utils/calendar";
+import {
+  convertDatetoString,
+  convertStringToDate,
+  formatShortWeekday,
+} from "@/utils/calendar";
 import Calendar from "react-calendar";
 import {
   NavigationLabelArgs,
@@ -8,8 +12,17 @@ import { ChevronLeft } from "../Icons/ChevronLeft";
 import { ChevronRight } from "../Icons/ChevronRight";
 import { useState } from "react";
 
-export function CalendarModel() {
-  const [tempDate, setTempDate] = useState<Date>(new Date());
+type CalendarModelProps = {
+  name: string;
+  value: string;
+  onChange: (property: string, value: string) => void;
+};
+
+export function CalendarModel({ name, value, onChange }: CalendarModelProps) {
+  const [date, setDate] = useState<Date>(new Date(convertStringToDate(value)));
+  const handleSelectDate = () => {
+    onChange(name, convertDatetoString(date));
+  };
 
   return (
     <dialog id="my_modal_1" className="modal">
@@ -27,13 +40,13 @@ export function CalendarModel() {
           }}
           formatShortWeekday={formatShortWeekday}
           onChange={(value: Value) => {
-            setTempDate(value as Date);
+            setDate(value as Date);
           }}
-          value={tempDate}
+          value={date}
         />
         <div className="float-right flex gap-8 mt-3">
           <button className="text-primary">Bỏ chọn</button>
-          <button onClick={() => setDate(tempDate)} className="text-primary">
+          <button onClick={handleSelectDate} className="text-primary">
             OK
           </button>
         </div>
