@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 
-const inputTypes = ["REVENUE", "EXPENDITURE"];
+const inputTypes = ["EXPEND", "INCOME"];
 
 type Context = {
   inputType: string;

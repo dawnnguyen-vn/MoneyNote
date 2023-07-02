@@ -1,6 +1,6 @@
 import { InputDate } from "@/components/shared/DateInput";
 
-export function Revenue() {
+export function Expend() {
   return (
     <div>
       <InputDate />

@@ -1,7 +1,7 @@
 import { useContext } from "@/hooks";
 import { ChangeEvent } from "react";
 
-export function RevenueAndExpenditureButton() {
+export function ExpendAndIncomeButtom() {
   const { inputType, setInputType, inputTypes } = useContext();
 
   const handleChangeInputType = (e: ChangeEvent<HTMLInputElement>) => {
