@@ -1,6 +1,6 @@
-import { Expend } from "@/components/pages/Expend";
+import { Expense } from "@/components/pages/Expense";
 import { InCome } from "@/components/pages/Income/Income";
-import { ExpendAndIncomeButtom } from "@/components/shared/ExpendAndIncomeButton";
+import { ExpenseAndIncomeButtom } from "@/components/shared/ExpenseAndIncomeButton";
 import { useContext } from "@/hooks";
 
 export function Home() {
@@ -8,9 +8,9 @@ export function Home() {
   return (
     <div>
       <div className="px-2 py-6">
-        <ExpendAndIncomeButtom />
+        <ExpenseAndIncomeButtom />
       </div>
-      {inputType == inputTypes[0] ? <Expend /> : <InCome />}
+      {inputType == inputTypes[0] ? <Expense /> : <InCome />}
     </div>
   );
 }
