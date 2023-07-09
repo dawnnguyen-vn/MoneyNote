@@ -51,7 +51,7 @@ export function InputForm({ type }: InputFormProps) {
   };
 
   return (
-    <div>
+    <div className="pb-10">
       <form onSubmit={handleSubmit}>
         <InputDate
           name="inputDate"
@@ -62,6 +62,11 @@ export function InputForm({ type }: InputFormProps) {
           <span className="w-20">Ghi chú</span>
           <input
             type="text"
+            name="memo"
+            value={formData.memo}
+            onChange={(e) => {
+              handleSetFormData(e.target.name, e.target.value);
+            }}
             className="w-full border-b-[1px] border-gray-400 outline-0 max-w-[256px]"
           />
         </div>
@@ -70,16 +75,27 @@ export function InputForm({ type }: InputFormProps) {
           <span className="w-20">Tiền chi</span>
           <div className="flex items-center w-full max-w-[256px]">
             <input
-              type="text"
-              className="input input-bordered input-primary w-full input-sm"
+              type="number"
+              value={formData.amount}
+              name="amount"
+              className="input input-bordered input-primary w-full input-sm text-2xl"
+              onChange={(e) => {
+                handleSetFormData(e.target.name, e.target.value);
+              }}
             />
             <span className="text-lg ml-1">₫</span>
           </div>
         </div>
 
-        <Categories name="categoryId" onChange={handleSetFormData} />
+        <Categories
+          value={formData.categoryId}
+          name="categoryId"
+          onChange={handleSetFormData}
+        />
 
-        <button type="submit">submit</button>
+        <button className="btn w-full btn-primary mt-12" type="submit">
+          Nhập khoản tiền chi
+        </button>
       </form>
       <CalendarModel
         name="inputDate"
