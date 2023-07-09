@@ -2,6 +2,7 @@ import { CalendarModel } from "@/components/shared/CalendarModel/CalendarModel";
 import { InputDate } from "@/components/shared/DateInput";
 import { convertDatetoString } from "@/utils/calendar";
 import { useEffect, useState } from "react";
+import { Categories } from "../Categories";
 
 type InputFormProps = {
   type: string;
@@ -57,6 +58,27 @@ export function InputForm({ type }: InputFormProps) {
           value={formData.inputDate}
           onChange={handleSetFormData}
         />
+        <div className="flex items-center justify-between pb-4">
+          <span className="w-20">Ghi chú</span>
+          <input
+            type="text"
+            className="w-full border-b-[1px] border-gray-400 outline-0 max-w-[256px]"
+          />
+        </div>
+
+        <div className="flex items-center justify-between pb-4">
+          <span className="w-20">Tiền chi</span>
+          <div className="flex items-center w-full max-w-[256px]">
+            <input
+              type="text"
+              className="input input-bordered input-primary w-full input-sm"
+            />
+            <span className="text-lg ml-1">₫</span>
+          </div>
+        </div>
+
+        <Categories name="categoryId" onChange={handleSetFormData} />
+
         <button type="submit">submit</button>
       </form>
       <CalendarModel

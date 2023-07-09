@@ -12,7 +12,7 @@ export function InputDate({ name, value, onChange }: InputDateProps) {
     onChange(name, value);
   };
   return (
-    <div className="flex justify-between items-center pb-5">
+    <div className="flex justify-between items-center pb-4">
       <span>Ngày</span>
       <MiniCalendar
         date={convertStringToDate(value)}
